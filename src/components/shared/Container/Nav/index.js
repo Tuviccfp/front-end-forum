@@ -1,5 +1,6 @@
 import { House } from "@phosphor-icons/react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const NavStyle = styled.nav`
   background-color: tomato;
@@ -25,11 +26,12 @@ const NavStyle = styled.nav`
 `;
 
 export default function Nav() {
+  const navigation = useNavigate();
     return (
       <NavStyle className="nav-home">
         <House size={30} />
         <div>
-            <button>Entrar</button>
+            <button onClick={() => navigation("/login")}>Entrar</button>
             <button>Cadastrar</button>
         </div>
       </NavStyle>
