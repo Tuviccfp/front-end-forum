@@ -17,6 +17,7 @@ const NavStyle = styled.nav`
         margin-left: 10px;
         box-sizing: border-box;
         border-radius: 5px;
+        border: none;
         width: 100px;
         padding: 1%;
         background-color: snow;
@@ -29,10 +30,10 @@ export default function Nav() {
   const navigation = useNavigate();
     return (
       <NavStyle className="nav-home">
-        <House size={30} />
+        <House onClick={() => navigation("/")} size={30} style={{cursor: "pointer"}}/>
         <div>
             <button onClick={() => navigation("/login")}>Entrar</button>
-            <button>Cadastrar</button>
+            <button onClick={() => navigation("/register")}>Cadastrar</button>
         </div>
       </NavStyle>
     );

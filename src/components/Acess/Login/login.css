@@ -30,3 +30,14 @@
     border: none;
     margin-top: 10px;
 }
+
+.checkbox-box {
+    display: flex;
+    align-items: center;
+    color: white;
+    box-sizing: border-box;
+}
+.checkbox-box > p {
+    font-size: 12px;
+    margin-left: 5px;
+}
