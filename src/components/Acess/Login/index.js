@@ -1,13 +1,13 @@
 import * as React from "react";
 import Container from "../../shared/Container";
 import './login.css';
+import { UseLogin, useLogin } from "../../shared/hooks/useLogin";
 
 export default function LoginComponent() {
     const [formLogin, setFormLogin] = React.useState({
         email: "",
         password: "",
     });
-
     const handleChange = (e) => {
         const {name, value} = e.target;
         setFormLogin((prevState) => ({
@@ -16,12 +16,10 @@ export default function LoginComponent() {
         }))
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Add your form submission logic here
-        console.log("Email: " + formLogin.email + ", Password: " + formLogin.password);
+        UseLogin(formLogin);
     };
-
     return (
         <Container>
             <form className="form-login" onSubmit={handleSubmit}>
