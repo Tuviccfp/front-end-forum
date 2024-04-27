@@ -1,6 +1,9 @@
 .form-login {
     width: 25%;
     height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .form-login > fieldset {    

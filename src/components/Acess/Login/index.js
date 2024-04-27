@@ -1,7 +1,7 @@
 import * as React from "react";
 import Container from "../../shared/Container";
 import './login.css';
-import { UseLogin, useLogin } from "../../shared/hooks/useLogin";
+import { UseLogin } from "../../shared/hooks/useLogin";
 
 export default function LoginComponent() {
     const [formLogin, setFormLogin] = React.useState({

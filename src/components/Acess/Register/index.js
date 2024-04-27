@@ -1,13 +1,23 @@
 import * as React from "react";
 import Container from "../../shared/Container";
 import "../Login/login.css";
+import { UseRegister } from "../../shared/hooks/useAcess";
+import { CheckCircle, WarningCircle } from "@phosphor-icons/react";
+import ModelMessageComponent from "../../shared/ModelMessage";
 
 export default function RegisterComponent() {
   const [formRegister, setFormRegister] = React.useState({
     email: "",
     password: "",
-    terms: "",
-    over18: "",
+    // terms: "",
+    // over18: "",
+  });
+  const [message, setMessage] = React.useState({
+    visible: false,
+    message: "",
+    color: "",
+    status: "",
+    icon: <></>
   });
 
   const handleChange = (e) => {
@@ -21,7 +31,42 @@ export default function RegisterComponent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formRegister);
+    try {
+      UseRegister(formRegister, message.message);
+      const registerOk = ({
+        visible: true,
+        message: `Conta criada com sucesso!` ,
+        color: "green",
+        icon: <CheckCircle size={20}/>,
+      })
+      setMessage(registerOk);
+      setTimeout(() => {
+        setMessage({
+          visible: false,
+          message: "",
+          color: "",
+          status: 0,
+          icon: <></>,
+        });
+      }, 2000);
+    } catch (error) {
+      const registerError = ({
+        visible: true,
+        status: 500,
+        message: `Ops...Houve um erro interno. Error: ${error.status} `,
+        color: "red",
+        icon: <WarningCircle size={20}/>,
+      })
+      setMessage(registerError);
+      setTimeout(() => {
+        setMessage({
+          visible: false,
+          message: "",
+          color: "",
+          icon: <></>,
+        });
+      }, 2000);
+    }
   };
 
   return (
@@ -77,6 +122,7 @@ export default function RegisterComponent() {
             Cadastrar
           </button>
         </fieldset>
+        <ModelMessageComponent message={message} />
       </form>
     </Container>
   );
