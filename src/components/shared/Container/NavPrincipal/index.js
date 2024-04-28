@@ -1,18 +1,17 @@
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom"
 const NavPrincipal = styled.nav`
-    margin-top: 100px;
     width: 40%;
-    height: 5%;
     background-color: tomato;
     border-radius: 10px;
     border: none;
+    box-sizing: border-box;
     & ul {
         display: flex;
         justify-content: space-around;
         align-items: center;
         padding-inline-start: 0px;
-        width: auto;
+        box-sizing: border-box;
         & li {
             gap: 10px;
             color: white;
