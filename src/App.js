@@ -4,16 +4,21 @@ import Home from './components/Home';
 import LoginComponent from './components/Acess/Login';
 import RegisterComponent from './components/Acess/Register';
 import CreateAskComponent from './components/CreateAsk';
+import Cookies from "js-cookie";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
+    const isAuth = Cookies.get("acessToken");
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginComponent />} />
         <Route path="/register" element={<RegisterComponent />} />
-        <Route path="/create-ask" element={<CreateAskComponent />} />
-        <Route path="*" element={<h1>404</h1>} />
+        {isAuth !== undefined && (
+          <Route path="/create-ask" element={<CreateAskComponent />} />
+        )}
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
     </BrowserRouter>
   );
