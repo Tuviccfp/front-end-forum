@@ -4,13 +4,15 @@ import styled from "styled-components";
 const ModelListAsks = styled.div`
     background-color: snow;
     text-align: center;
-    width: 40%;
     padding: 10px;
+    margin: 10px 50px 50px 50px;
+    width: auto;
     border-radius: 20px;
     box-sizing: border-box;
+    transition: padding ease-in-out 1s, width ease-in-out 1000s;
     &:hover {
         padding: 40px;
-        transition: padding ease-in-out 1s;
+        width: 650px;
     }
 `
 export default function ListAsksComponent({ data }) {
